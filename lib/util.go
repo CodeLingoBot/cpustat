@@ -28,7 +28,7 @@ import (
 	"strings"
 )
 
-// crude protection against rollover. This will miss the last portion of the previous sample
+// SafeSub; crude protection against rollover. This will miss the last portion of the previous sample
 // before the overflow, but capturing that is complicated because of the various number types
 // involved and their inconsistent documentation.
 func SafeSub(a, b uint64) uint64 {
@@ -95,7 +95,7 @@ func ReadSmallFileStat(filename string) ([]byte, os.FileInfo, error) {
 	return buf.Bytes(), info, err
 }
 
-// Read a small file and split on newline
+// ReadFileLines; a small file and split on newline
 func ReadFileLines(filename string) ([]string, error) {
 	file, err := ReadSmallFile(filename)
 	if err != nil {
@@ -107,7 +107,7 @@ func ReadFileLines(filename string) ([]string, error) {
 	return strings.Split(fileStr, "\n"), nil
 }
 
-// pull a float64 out of a string
+// ReadFloat; pull a float64 out of a string
 func ReadFloat(str string) float64 {
 	val, err := strconv.ParseFloat(str, 64)
 	if err != nil {
@@ -117,7 +117,7 @@ func ReadFloat(str string) float64 {
 	return val
 }
 
-// pull a uint64 out of a string
+// ReadUInt; pull a uint64 out of a string
 func ReadUInt(str string) uint64 {
 	val, err := strconv.ParseUint(str, 10, 64)
 	if err != nil {
@@ -126,7 +126,7 @@ func ReadUInt(str string) uint64 {
 	return val
 }
 
-// pull an int64 out of a string
+// ReadInt; pull an int64 out of a string
 func ReadInt(str string) int64 {
 	val, err := strconv.ParseInt(str, 10, 64)
 	if err != nil {
@@ -135,7 +135,7 @@ func ReadInt(str string) int64 {
 	return val
 }
 
-// remove grouping characters that confuse the termui parser
+// StripSpecial; remove grouping characters that confuse the termui parser
 func StripSpecial(r rune) rune {
 	if r == '[' || r == ']' || r == '(' || r == ')' {
 		return -1

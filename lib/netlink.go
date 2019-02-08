@@ -41,7 +41,7 @@ const (
 	CTRL_CMD_GETFAMILY    = 3
 )
 
-// convert a byte slice of a null terminated C string into a Go string
+// stringFromBytes; convert a byte slice of a null terminated C string into a Go string
 func stringFromBytes(c []byte) string {
 	nullPos := 0
 	i := 0
@@ -164,7 +164,7 @@ var (
 	globalSeq        = uint32(0)
 )
 
-// Send a genl taskstats message and hope that Linux doesn't change this layout in the future
+// sendGetTaskstatsMessage; a genl taskstats message and hope that Linux doesn't change this layout in the future
 func sendGetTaskstatsMessage(conn *NLConn, pid int) error {
 	globalSeq++
 
@@ -232,7 +232,7 @@ func readGetFamilyMessage(conn *NLConn) (uint16, error) {
 	return genlFamily, nil
 }
 
-// Send a genl taskstats message to get all genl families
+// sendGetFamilyCmdMessage; a genl taskstats message to get all genl families
 func sendGetFamilyCmdMessage(conn *NLConn) error {
 	globalSeq++
 	genlName := []byte("TASKSTATS")

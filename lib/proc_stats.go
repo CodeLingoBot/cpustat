@@ -68,7 +68,7 @@ type ProcStatsMap map[int]*ProcStats
 // super not thread safe but GC friendly way to reuse this string slice
 var splitParts []string
 
-// you might think that we could split on space, but due to what can at best be called
+// procPidStatSplit; you might think that we could split on space, but due to what can at best be called
 // a shortcoming of the /proc/pid/stat format, the comm field can have unescaped spaces, parens, etc.
 // This may be a bit paranoid, because even many common tools like htop do not handle this case well.
 func procPidStatSplit(line string) []string {

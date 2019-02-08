@@ -162,7 +162,7 @@ func tuiInit(ch chan string, interval int) {
 	termui.Loop()
 }
 
-// this is a lot of copy/paste from dumpStats. Would be good to refactor this to share.
+// tuiListUpdate is a lot of copy/paste from dumpStats. Would be good to refactor this to share.
 func tuiListUpdate(infoMap lib.ProcInfoMap, list lib.Pidlist, procSum lib.ProcSampleMap,
 	procHist lib.ProcStatsHistMap, taskHist lib.TaskStatsHistMap,
 	sysSum *lib.SystemStats, sysHist *lib.SystemStatsHist, jiffy, interval, samples int) {

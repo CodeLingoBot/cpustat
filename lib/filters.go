@@ -11,7 +11,7 @@ import (
 
 var splitter = regexp.MustCompile("[, ] *")
 
-// ParseUsrList take a string of Unix usernames and converts it into a slice of int userids
+// ParseUserList; take a string of Unix usernames and converts it into a slice of int userids
 func ParseUserList(s string) ([]int, error) {
 	parts := splitter.Split(s, -1)
 	ret := make([]int, len(parts))

@@ -31,7 +31,7 @@ var procPath = "/proc"
 
 type Pidlist []int
 
-// We churn the pidlist constantly, so this is an optimization to reuse the underlying list every time.
+// GetPidList; We churn the pidlist constantly, so this is an optimization to reuse the underlying list every time.
 // Replace the new values in the old list, shrinking or growing as necessary. This saves a bit of GC.
 // Note that reading /proc to get the pidlist returns the elements in a consistent order. If we ever
 // get a new source of a pidlist like perf_events or something, make sure it sorts.

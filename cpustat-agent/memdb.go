@@ -93,7 +93,7 @@ func (m *MemDB) ReleaseSample() {
 	m.dbLock.Unlock()
 }
 
-// TODO - figure out how expensive copying this is, because if the buffer wraps around
+// ReadSamples; TODO - figure out how expensive copying this is, because if the buffer wraps around
 //        on us while the caller is holding these results, they could get overwritten.
 func (m *MemDB) ReadSamples(n uint32) []dbEntry {
 	if n > m.dbEntries {
